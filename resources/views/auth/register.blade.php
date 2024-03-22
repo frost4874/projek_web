@@ -66,8 +66,8 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="kota">Kota</label>
-                                <input type="text" class="form-control" id="kota" name="kota" required>
+                                <label for="kota">Jember</label>
+                                  <input type="text" class="form-control" id="kota" name="kota" value="Jember" readonly>
                             </div>
                             <div class="form-group">
                                 <label for="tgl_lahir">Tanggal Lahir</label>
