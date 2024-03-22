@@ -16,6 +16,10 @@
   <link href="demo1/css/sweetalert.css" rel="stylesheet" type="text/css">
 <script src="demo1/js/jquery-2.1.3.min.js"></script>
 <script src="demo1/js/sweetalert.min.js"></script>
+
+    <script src="https://kit.fontawesome.com/9ca8b5ddcc.js" crossorigin="anonymous"></script>
+
+
   <!-- endinject -->
   <!-- plugin css for this page -->
   <!-- End plugin css for this page -->
@@ -33,14 +37,15 @@
           <div class="col-lg-4 mx-auto">
             <div class="auth-form-light text-left py-5 px-4 px-sm-5">
               <div class="brand-logo">
-                <img src="main/img/kabmalang.png" width="125" style="display:block; margin:auto;" alt="logo">
+                <img src="main/img/kabjember.png" width="125" style="display:block; margin:auto;" alt="logo">
               </div>
               <h4 class="text-center">HALAMAN PENDAFTARAN</h4>
               <form action="{{ route('register') }}" method="POST">
                             @csrf
                             <div class="form-group">
                                 <label for="nik">NIK</label>
-                                <input type="number" class="form-control" id="nik" name="nik" required autofocus>
+                                <input type="text" class="form-control" id="nik" name="nik" required autofocus maxlength="16">
+                                <small id="nikWarning" class="form-text text-muted"></small>
                             </div>
                             <div class="form-group">
                                 <label for="name">Nama Lengkap</label>
@@ -66,7 +71,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="kota">Jember</label>
+                                <label for="kota">Kota</label>
                                   <input type="text" class="form-control" id="kota" name="kota" value="Jember" readonly>
                             </div>
                             <div class="form-group">
@@ -74,9 +79,16 @@
                                 <input type="date" class="form-control" id="tgl_lahir" name="tgl_lahir" required>
                             </div>
                             <div class="form-group">
-                                <label for="password">Password</label>
-                                <input type="password" class="form-control" id="password" name="password" required>
-                            </div>
+    <label for="password">Password</label>
+    <div class="input-group">
+        <input type="password" class="form-control" id="password" name="password" required pattern="(?=.*\d)(?=.*[A-Z]).{8,}" title="Password harus mengandung setidaknya satu angka, satu huruf besar, dan setidaknya 8 karakter" >
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                <i class="fas fa-eye"></i>
+            </button>
+        </div>
+    </div>
+</div>
                             <button type="submit" class="btn btn-primary btn-block">Daftar</button>
                         </form>
                 <div class="text-center mt-4 font-weight-light">
@@ -107,6 +119,34 @@
   <script src="jquey.js"></script>
   <script src="http://code.jquery.com/jquery-3.0.0.min.js"></script>
   <script>
+    $(document).ready(function(){
+        $('#nik').on('input', function(){
+            var nikLength = $(this).val().length;
+            if(nikLength < 16){
+                $('#nikWarning').text('NIK harus terdiri dari 16 digit').addClass('text-danger');
+            }else{
+                $('#nikWarning').text('').removeClass('text-danger');
+            }
+        });
+    });
+</script>
+<script>
+    $(document).ready(function(){
+        $('#togglePassword').on('click', function(){
+            var passwordInput = $('#password');
+            var passwordFieldType = passwordInput.attr('type');
+            if(passwordFieldType === 'password'){
+                passwordInput.attr('type', 'text');
+                $(this).html('<i class="fas fa-eye-slash"></i>');
+            }else{
+                passwordInput.attr('type', 'password');
+                $(this).html('<i class="fas fa-eye"></i>');
+            }
+        });
+    });
+</script>
+
+  <script>
         $(document).ready(function(){
             $.get("/kecamatan", function(data){
                 $.each(data, function(index, kecamatan){
@@ -124,7 +164,7 @@
                 });
             });
         });
-    </script>
+</script>
 </body>
 
 </html>

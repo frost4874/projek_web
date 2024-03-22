@@ -27,7 +27,7 @@
           <div class="col-lg-4 mx-auto">
             <div class="auth-form-light text-left py-5 px-4 px-sm-5">
               <div class="brand-logo ">
-                <img src="main/img/kabmalang.png" width="125" style="display:block; margin:auto;" alt="logo">
+                <img src="main/img/kabjember.png" width="125" style="display:block; margin:auto;" alt="logo">
               </div>
               <h4 class="text-center">LOGIN PENGGUNA</h4>
               <h6 class=" font-weight-light">
@@ -35,8 +35,9 @@
               <form action="{{ route('login') }}" method="POST">
                             @csrf
                             <div class="form-group">
-                                <label for="nik">NIK Anda</label>
-                                <input type="text" class="form-control" id="nik" name="nik" required autofocus>
+                                <label for="nik">NIK</label>
+                                <input type="text" class="form-control" id="nik" name="nik" required autofocus maxlength="16">
+                                <small id="nikWarning" class="form-text text-muted"></small>
                             </div>
                             <div class="form-group">
                                 <label for="password">Password</label>
@@ -70,5 +71,17 @@
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <!-- endinject -->
   <script src="http://code.jquery.com/jquery-3.0.0.min.js"></script>
+  <script>
+    $(document).ready(function(){
+        $('#nik').on('input', function(){
+            var nikLength = $(this).val().length;
+            if(nikLength < 16){
+                $('#nikWarning').text('NIK harus terdiri dari 16 digit').addClass('text-danger');
+            }else{
+                $('#nikWarning').text('').removeClass('text-danger');
+            }
+        });
+    });
+</script>
 </body>
 </html>
