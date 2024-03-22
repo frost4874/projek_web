@@ -20,11 +20,11 @@ class RegisterController extends Controller
     public function register(Request $request)
     {
         $validatedData = $request->validate([
-            'nik' => 'required|numeric|min:16|max:16|unique:biodata',
+            'nik' => 'required|numeric|unique:biodata',
             'nama' => 'required|string|max:100',
             'jekel' => 'required|in:Laki-Laki,Perempuan',
-            'kecamatan' => 'required|string',
-            'desa' => 'required|string',
+            'kecamatan' => 'required|string|max:100',
+            'desa' => 'required|string|max:100',
             'kota' => 'required|string|max:6',
             'tgl_lahir' => 'required|date',
             'password' => 'required|string|min:8',
