@@ -1,87 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <!-- Required meta tags -->
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Halaman Login Pemohon</title>
-  <!-- plugins:css -->
-  <link rel="stylesheet" href="main/vendors/mdi/css/materialdesignicons.min.css">
-  <link rel="stylesheet" href="main/vendors/base/vendor.bundle.base.css">
-  <link href="main/css/sweetalert.css" rel="stylesheet" type="text/css">
-  <!-- <script src="main/js/jquery-2.1.3.min.js"></script> -->
-  <script src="main/js/sweetalert.min.js"></script>
-  <!-- endinject -->
-  <!-- plugin css for this page -->
-  <!-- End plugin css for this page -->
-  <!-- inject:css -->
-  <link rel="stylesheet" href="main/css/style.css">
-</head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login Admin Desa</title>
 
-<body>
-  <div class="container-scroller">
-    <div class="container-fluid page-body-wrapper full-page-wrapper">
-      <div class="content-wrapper d-flex align-items-center auth px-0">
-        <div class="row w-100 mx-0">
-          <div class="col-lg-4 mx-auto">
-            <div class="auth-form-light text-left py-5 px-4 px-sm-5">
-              <div class="brand-logo ">
-                <img src="main/img/kabjember.png" width="125" style="display:block; margin:auto;" alt="logo">
-              </div>
-              <h4 class="text-center">LOGIN PENGGUNA</h4>
-              <h6 class=" font-weight-light">
-              </h6>
-              <form action="{{ route('login') }}" method="POST">
-                            @csrf
-                            <div class="form-group">
-                                <label for="nik">NIK</label>
-                                <input type="text" class="form-control" id="nik" name="nik" required autofocus maxlength="16">
-                                <small id="nikWarning" class="form-text text-muted"></small>
-                            </div>
-                            <div class="form-group">
-                                <label for="password">Password</label>
-                                <input type="password" class="form-control" id="password" name="password" required>
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-block">Login</button>
-                        </form>
-                <div class="mb-2">
-                  <a class="btn btn-block btn-danger btn-lg font-weight-medium auth-form-btn" href="/">BATAL</a>
-                </div>
-                <div class="text-center mt-4 font-weight-light">
-                  Belum memiliki akun? <a href="/register" class="text-primary">Buat</a>
-                </div>
-              
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/asset/plugins/fontawesome-free/css/all.min.css">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="/asset/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/asset/dist/css/adminlte.min.css">
+</head>
+<body class="hold-transition login-page">
+<div class="login-box">
+  <!-- Logo -->
+  <div class="login-logo"style="border: none;">
+    <img src="/asset/images/jember.png" alt="AdminLTE Logo" style="width: 150px;">
+  </div>
+  <!-- /.login-logo -->
+  <div class="card card-outline card-primary">
+    <div class="card-header text-center">
+      <a href="#" class="h1"><b>Admin</b> Desa</a>
+    </div>
+    <div class="card-body">
+      <p class="login-box-msg">Sign in to start your session</p>
+
+      <form action="{{ route('login') }}" method="POST">
+        @csrf
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="NIK" name="nik" required autofocus maxlength="16">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-user"></span>
             </div>
           </div>
         </div>
-      </div>
-      <!-- content-wrapper ends -->
+        <div class="input-group mb-3">
+          <input type="password" class="form-control" placeholder="Password" name="password" required>
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-8">
+            <div class="icheck-primary">
+              <input type="checkbox" id="remember">
+              <label for="remember">
+                Remember Me
+              </label>
+            </div>
+          </div>
+          <!-- /.col -->
+          <div class="col-4">
+            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+          </div>
+          <!-- /.col -->
+        </div>
+      </form>
+
+      <!-- <div class="social-auth-links text-center mt-2 mb-3">
+        <a href="#" class="btn btn-block btn-primary">
+          <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
+        </a>
+        <a href="#" class="btn btn-block btn-danger">
+          <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
+        </a>
+      </div> -->
+      <!-- /.social-auth-links -->
+
+      <p class="mb-1">
+        <a href="forgot-password.html">I forgot my password</a>
+      </p>
+      <p class="mb-0">
+        <a href="register.html" class="text-center">Register a new membership</a>
+      </p>
     </div>
-    <!-- page-body-wrapper ends -->
+    <!-- /.card-body -->
   </div>
-  <!-- container-scroller -->
-  <!-- plugins:js -->
-  <script src="main/vendors/base/vendor.bundle.base.js"></script>
-  <!-- endinject -->
-  <!-- inject:js -->
-  <script src="main/js/off-canvas.js"></script>
-  <script src="main/js/hoverable-collapse.js"></script>
-  <script src="main/js/template.js"></script>
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <!-- endinject -->
-  <script src="http://code.jquery.com/jquery-3.0.0.min.js"></script>
-  <script>
-    $(document).ready(function(){
-        $('#nik').on('input', function(){
-            var nikLength = $(this).val().length;
-            if(nikLength < 16){
-                $('#nikWarning').text('NIK harus terdiri dari 16 digit').addClass('text-danger');
-            }else{
-                $('#nikWarning').text('').removeClass('text-danger');
-            }
-        });
-    });
-</script>
+  <!-- /.card -->
+</div>
+<!-- /.login-box -->
+
+<!-- jQuery -->
+<script src="/asset/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/asset/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/asset/dist/js/adminlte.min.js"></script>
 </body>
 </html>
