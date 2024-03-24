@@ -18,7 +18,6 @@ class KecamatanDesa extends Model
         'created_at',
         'updated_at',
     ];
-    
 
     // relasi antara kecamatan dan desa
     public function desas()
