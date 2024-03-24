@@ -24,7 +24,7 @@ class LoginController extends Controller
         if (Auth::guard('biodata')->attempt($credentials, $request->remember)) {
             $request->session()->regenerate();
 
-            return redirect('/');
+            return redirect()->route('admin.dashboard');
         }
 
         return back()->withErrors([

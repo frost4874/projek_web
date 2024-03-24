@@ -21,4 +21,5 @@ class KecamatanDesaController extends Controller
         return response()->json($desas);
         // \Log::info('Data desa yang diambil: ' . $desas); //untuk melihat log pakah sesuai ato tidak
     }
+    
 }
